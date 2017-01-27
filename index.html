@@ -1,21 +1,122 @@
-<!doctype>
+<!DOCTYPE html>
+
 <html>
+
+
 <head>
-<script>
-function computeLoan() {
-var NumberofSchools = document.getElementById('schools').value;
-var HowMuch = 175 + ((NumberofSchools-1) * 50);
-HowMuch = HowMuch.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-document.getElementById('HowMuch').innerHTML = "Toal Cost = $" +HowMuch;
-}
+<script src="test.js">
 </script>
+
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
+
 <body>
-<p> Number of School Applied: <input id= "schools" type="number" min="1" max="100" onchange="computeLoan()"></p>
-<button onclick="computeLoan()">Submit</button>
-<h2 id="HowMuch"></h2>
+<div id="title">
+<h1> Welcome To CASPA GPA Calculator </h1>
+<p> Please Select Your insitution's unit type: </p>
+<form id="myForm" action="" method="">
+<input type="radio" value="Semesters" name="SemestersorQuarters"> Semesters
+<br>
+<input type="radio" value="Quarters" name="SemestersorQuarters"> Quarters
+</form>
+</div>
+
+<div id="listscience">
+<form>
+<P> Please Select Your Classes Completed </p>
+<select id="SClass">
+	<option value="select">Please Select</option>
+	<option value="BioI">Bio I</option>
+
+	<option value="PhysioI">Physio I</option>
+	<option value="BioII">Bio II</option>
+</select>
+</form>
+<p> Click Here To Add a Class</p>
+<p><button id="delete">Delete Course</button> </p>
+</div>
+
+
+
+<div id="listNscience">
+<form>
+<P> Please Select Your Classes Completed </p>
+<select id="NSClass">
+	<option value="select">Please Select</option>
+	<option value="ChemI">Chem I</option>
+</select>
+</form>
+<p> Click Here To Add a Class</p>
+
+<p><button id="delete1">Delete Course</button> </p>
+
+</div>
+
+<div id="importantbutton">
+<button onclick="gpacalc()"> Submit</button>
+</div>
+<h2><div id="overall">Overall</div><div id="sciencegpa">Science</div><div id="BCP">BCP</div></h2>
+
+
+
+
+
+<h3><div id="ScienceTitle"><p>Science</p></div><div id="NonScienceTitle"><p>Non-Science</p></div></h3>
+<h4 id="Here">  <div id="Science"></div><div id="NonScience"></div>  </h4>
+
+<script src="clicks.js"></script>
+<script>
+	$(document).ready(function(){
+	
+	$("#delete,#delete1").click(function (){
+	$("#Science,#NonScience").children("div:last").remove();
+	
+	});
+	
+	$(function() {
+		var API = {
+			
+			BioI: function(){ 
+			var rem = ' <div class="center"> <br> <form> BioI<br>Units: <input id="biocr" type="text"> Grade: <input id="biogr" type="text"> <br> <input type="radio" value="Semesters" name="bioItp">Semesters <br> <input type="radio" value="Quarters" name="bioItp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=bioItp][value=' + ram + ']').prop('checked',true)
+			},
+			ChemI: function(){ 
+			var rem = ' <div> <br> <form> ChemI<br>Units: <input id="chemcr" type="text"> Grade: <input id="chemgr" type="text">  <br> <input type="radio" value="Semesters" name="chemItp">Semesters <br> <input type="radio" value="Quarters" name="chemItp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=chemItp][value=' + ram + ']').prop('checked',true)
+			},
+			PhysioI: function(){ 
+			var rem = '<div class="center"> <br> <form> PhysioI<br>Units: <input id="physiocr" type="text"> Grade: <input id="physiogr" type="text"> <br> <input  type="radio" value="Semesters" name="physioItp">Semesters <br> <input type="radio" value="Quarters" name="physioItp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=physioItp][value=' + ram + ']').prop('checked',true)
+			}
+			};
+
+			
+			
+	
+	$("#SClass,#NSClass").change(function(){
+		var method = API[$(this).val()];
+		return method && method();
+	
+		});
+	});	
+	
+
+	
+
+});
+
+
+
+</script>
 
 
 
 </body>
+
 </html>
