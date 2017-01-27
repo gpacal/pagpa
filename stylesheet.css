@@ -1,0 +1,52 @@
+/*postitioning of the DIVs */
+#Science,#listscience {
+	width: 50%;
+	float: Left;
+	}
+
+#NonScience,#listNscience {
+	width: 50%;
+	float: Right;
+
+
+}
+
+#importantbutton,#title{
+	
+	text-align: center;
+   
+   
+}
+
+#ScienceTitle {
+	width: 50%;
+	float: Left;
+	font-size: 50px;
+	color: purple;
+	}
+
+#NonScienceTitle {
+	width: 50%;
+	float: Right;
+	font-size: 50px;
+	color: green;
+
+}
+
+#overall {
+	width: 30%;
+	float: Left;
+	}
+
+#sciencegpa {
+	width: 30%;
+	float: Right;
+
+
+}
+#BCP {
+	width: 30%;
+	float: Right;
+
+
+}
