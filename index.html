@@ -1,0 +1,24 @@
+<!doctype>
+<html>
+<head>
+<script>
+function computeLoan() {
+var NumberofSchools = document.getElementById('schools').value;
+var HowMuch = 175 + ((NumberofSchools-1) * 50);
+HowMuch = HowMuch.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+document.getElementById('HowMuch').innerHTML = "Toal Cost = $" +HowMuch;
+
+
+}
+
+
+</script>
+</head>
+<body>
+<p> Number of School Applied: <input id= "schools" type="number" min="1" max="100" onchange="computeLoan()"></p>
+<button onclick="computeLoan()">Submit</button>
+<h2 id="HowMuch"></h2>
+
+
+
+</body>
