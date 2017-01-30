@@ -206,19 +206,74 @@ for (var xx = 0; xx < 11; xx++)
 reGPA = rate_value*please*y;}
 return reGPA;
 };
+//---------------english
+function EnglishACr(){
+var grcheck = document.getElementById("EnglishAcr")
+var reGPA; 
+if (grcheck === null) {reGPA = 0;}
+else {
+var rates = document.getElementsByName('EnglishAtp');
+var grade = document.getElementById("EnglishAcr").value;
+var rate_value;
+for(var i = 0; i < rates.length; i++){
+    if(rates[i].checked){
+        rate_value = rates[i].value;
+		}}
 
+	if(rate_value == "Semesters"){
+	rate_value = 1;
+	}
+	else if (rate_value == "Quarters"){
+	rate_value = 0.667;
+	}
+	reGPA = rate_value*grade;}
+return reGPA;
+}
+function EnglishAAtp(){
+var grcheck = document.getElementById("EnglishAcr")
+var reGPA;
 
+if (grcheck === null) {reGPA = 0;}
+else {
+var rates = document.getElementsByName('EnglishAtp');
+var please = document.getElementById("EnglishAcr").value;
+var grade = document.getElementById("EnglishAgr").value;
+var rate_value;
+var y;
+for(var i = 0; i < rates.length; i++){
+    if(rates[i].checked){
+        rate_value = rates[i].value;
+		}}
 
+	if(rate_value == "Semesters"){
+	rate_value = 1;
+	}
+	else if (rate_value == "Quarters"){
+	rate_value = 0.667;
+	}
+
+for (var xx = 0; xx < 11; xx++)
+                {
+                if (grade == gr[xx])
+                        {
+                        y =  cr[xx];
+                       
+                        break;
+                        }
+                }
+reGPA = rate_value*please*y;}
+return reGPA;
+};
 
 //sum of grades and credit----------------------------------
 function sumcr(){
-var sum = Bio1Atp() + Chem1Atp() + physioAtp()
+var sum = Bio1Atp() + Chem1Atp() + physioAtp() + EnglishAAtp()
 return sum
 
 }
 
 function sumgr(){
-var sum = Bio1Cr() + Chem1Cr() + physioCr()
+var sum = Bio1Cr() + Chem1Cr() + physioCr() + EnglishACr()
 return sum
 
 }
