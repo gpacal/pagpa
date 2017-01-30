@@ -11,11 +11,9 @@
 
 }
 
-#importantbutton,#title{
-	
+#importantbutton,#title{	
 	text-align: center;
-   
-   
+
 }
 
 #ScienceTitle {
@@ -49,4 +47,29 @@
 	float: Right;
 
 
+}
+/*size of directions */
+#dir1,#dir2,#dir3 {
+	font-weight: bold;
+	font-size: 30px;
+	font-family: "Times New Roman"
+}
+
+#dir2 {
+	color: purple;
+
+}
+#dir3 {
+	color: green;
+
+}
+/*delete buttons and submit button */
+#delete, #delete1 {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#importantbutton1{
+	font-weight: bold;
+	font-size: 30px;
 }
