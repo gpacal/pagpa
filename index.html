@@ -11,9 +11,9 @@
 </head>
 
 <body>
-<div id="title">
-<h1> Welcome To CASPA GPA Calculator </h1>
-<p> Please Select Your insitution's unit type: </p>
+<div>
+<h1 id="title"> Welcome To CASPA GPA Calculator </h1>
+<p id="dir1"> 1: Please Select a Unit Type for your Academic Terms: </p>
 <form id="myForm" action="" method="">
 <input type="radio" value="Semesters" name="SemestersorQuarters"> Semesters
 <br>
@@ -23,37 +23,37 @@
 
 <div id="listscience">
 <form>
-<P> Please Select Your Classes Completed </p>
+<P id="dir2"> 2:Please Select Science Classes Completed </p>
 <select id="SClass">
 	<option value="select">Please Select</option>
 	<option value="BioI">Bio I</option>
-
+	<option value="ChemI">Chem I</option>
 	<option value="PhysioI">Physio I</option>
-	<option value="BioII">Bio II</option>
+	
 </select>
 </form>
-<p> Click Here To Add a Class</p>
-<p><button id="delete">Delete Course</button> </p>
+
+<p><button id="delete">Delete Science Course</button> </p>
 </div>
 
 
 
 <div id="listNscience">
 <form>
-<P> Please Select Your Classes Completed </p>
+<P id="dir3"> 3:Please Select Non-Science Classes Completed </p>
 <select id="NSClass">
 	<option value="select">Please Select</option>
-	<option value="ChemI">Chem I</option>
+	<option value="EnglishI">English I</option>
 </select>
 </form>
-<p> Click Here To Add a Class</p>
 
-<p><button id="delete1">Delete Course</button> </p>
+
+<p><button id="delete1">Delete Non-Science Course</button> </p>
 
 </div>
 
 <div id="importantbutton">
-<button onclick="gpacalc()"> Submit</button>
+<button id="importantbutton1" onclick="gpacalc()"> Submit</button>
 </div>
 <h2><div id="overall">Overall</div><div id="sciencegpa">Science</div><div id="BCP">BCP</div></h2>
 
@@ -68,10 +68,16 @@
 <script>
 	$(document).ready(function(){
 	
-	$("#delete,#delete1").click(function (){
-	$("#Science,#NonScience").children("div:last").remove();
 	
+	$("#delete").click(function (){
+	$("#Science").children("div:last").remove();
 	});
+	
+	$("#delete1").click(function (){
+	$("#NonScience").children("div:last").remove();
+	});
+	
+	
 	
 	$(function() {
 		var API = {
@@ -84,7 +90,7 @@
 			},
 			ChemI: function(){ 
 			var rem = ' <div> <br> <form> ChemI<br>Units: <input id="chemcr" type="text"> Grade: <input id="chemgr" type="text">  <br> <input type="radio" value="Semesters" name="chemItp">Semesters <br> <input type="radio" value="Quarters" name="chemItp">Quarters </form> </div>' ;
-			$("#NonScience").prepend(rem);
+			$("#Science").prepend(rem);
 			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
 			$('input[name=chemItp][value=' + ram + ']').prop('checked',true)
 			},
@@ -93,6 +99,12 @@
 			$("#Science").prepend(rem);
 			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
 			$('input[name=physioItp][value=' + ram + ']').prop('checked',true)
+			},
+			EnglishI: function(){ 
+			var rem = '<div class="center"> <br> <form> EnglishI<br>Units: <input id="EnglishAcr" type="text"> Grade: <input id="EnglishAgr" type="text"> <br> <input  type="radio" value="Semesters" name="EnglishAtp">Semesters <br> <input type="radio" value="Quarters" name="physioItp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=EnglishAtp][value=' + ram + ']').prop('checked',true)
 			}
 			};
 
