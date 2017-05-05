@@ -27,9 +27,13 @@
 <select id="SClass">
 	<option value="select">Please Select</option>
 	<option value="BioI">Bio I</option>
-	<option value="ChemI">Chem I</option>
-	<option value="PhysioI">Physio I</option>
-	
+	<option value="ChemI">Chem I W/ Lab</option>
+	<option value="ChemII">Chem II W/ Lab</option>
+	<option value="ChemIII">Chem III W/ Lab</option>
+	<option value="PhysioI">Physio I W/ Lab</option>
+	<option value="AnatomyI">Anatomy I W/ Lab</option>
+	<option value="MicrobioI">MicroBiology I W/ Lab</option>
+	<option value="GeneticsI">Genetics</option>
 </select>
 </form>
 
@@ -44,6 +48,13 @@
 <select id="NSClass">
 	<option value="select">Please Select</option>
 	<option value="EnglishI">English I</option>
+	<option value="EnglishII">English II</option>
+	<option value="EnglishIII">English III</option>
+	<option value="MathI">MathI</option>
+	<option value="MathII">MathII</option>
+	<option value="MathIII">MathIII</option>
+	<option value="PsychologyI">PsychologyI</option>
+	<option value="SociologyI">SociologyI</option>
 </select>
 </form>
 
@@ -55,14 +66,15 @@
 <div id="importantbutton">
 <button id="importantbutton1" onclick="gpacalc()"> Submit</button>
 </div>
-<h2><div id="overall">Overall GPA:</div><div id="sciencegpa">Science GPA:</div><div id="BCP">BCP GPA:</div></h2>
+<h2><div id="overall">Overall GPA:</div><div id="sciencegpa">Science GPA:</div>
 
 
 
 
 
 <h3><div id="ScienceTitle"><p>Science</p></div><div id="NonScienceTitle"><p>Non-Science</p></div></h3>
-<h4 id="Here">  <div id="Science"></div><div id="NonScience"></div>  </h4>
+<h4 id="Here"> <p>(Please Enter Grades as A+,A,A-,B+,B,B- ....)</p>
+ <div id="Science"></div><div id="NonScience"></div>  </h4>
 
 <script src="clicks.js"></script> 
 <script>
@@ -81,7 +93,7 @@
 	
 	$(function() {
 		var API = {
-			
+			//----------------------------------------------SCIENCE----------------------------------------------------------------
 			BioI: function(){ 
 			var rem = ' <div class="center"> <br> <form> BioI<br>Units: <input id="biocr" type="text"> Grade: <input id="biogr" type="text"> <br> <input type="radio" value="Semesters" name="bioItp">Semesters <br> <input type="radio" value="Quarters" name="bioItp">Quarters </form> </div>' ;
 			$("#Science").prepend(rem);
@@ -94,18 +106,91 @@
 			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
 			$('input[name=chemItp][value=' + ram + ']').prop('checked',true)
 			},
+			ChemII: function(){ 
+			var rem = ' <div> <br> <form> ChemII<br>Units: <input id="chemIIcr" type="text"> Grade: <input id="chemIIgr" type="text">  <br> <input type="radio" value="Semesters" name="chemIItp">Semesters <br> <input type="radio" value="Quarters" name="chemIItp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=chemIItp][value=' + ram + ']').prop('checked',true)
+			},
+			ChemIII: function(){ 
+			var rem = ' <div> <br> <form> ChemIII<br>Units: <input id="chemIIIcr" type="text"> Grade: <input id="chemIIIgr" type="text">  <br> <input type="radio" value="Semesters" name="chemIIItp">Semesters <br> <input type="radio" value="Quarters" name="chemIIItp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=chemIIItp][value=' + ram + ']').prop('checked',true)
+			},
 			PhysioI: function(){ 
-			var rem = '<div class="center"> <br> <form> PhysioI<br>Units: <input id="physiocr" type="text"> Grade: <input id="physiogr" type="text"> <br> <input  type="radio" value="Semesters" name="physioItp">Semesters <br> <input type="radio" value="Quarters" name="physioItp">Quarters </form> </div>' ;
+			var rem = '<div class="center"> <br> <form> PhysioI W/ Lab<br>Units: <input id="physiocr" type="text"> Grade: <input id="physiogr" type="text"> <br> <input  type="radio" value="Semesters" name="physioItp">Semesters <br> <input type="radio" value="Quarters" name="physioItp">Quarters </form> </div>' ;
 			$("#Science").prepend(rem);
 			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
 			$('input[name=physioItp][value=' + ram + ']').prop('checked',true)
 			},
+			AnatomyI: function(){ 
+			var rem = '<div class="center"> <br> <form> AnatomyI W/ Lab<br>Units: <input id="anacr" type="text"> Grade: <input id="anagr" type="text"> <br> <input  type="radio" value="Semesters" name="anatp">Semesters <br> <input type="radio" value="Quarters" name="anatp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=anatp][value=' + ram + ']').prop('checked',true)
+			},
+			MicrobioI: function(){ 
+			var rem = '<div class="center"> <br> <form> Microbiology W/ Lab<br>Units: <input id="miccr" type="text"> Grade: <input id="micgr" type="text"> <br> <input  type="radio" value="Semesters" name="mictp">Semesters <br> <input type="radio" value="Quarters" name="mictp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=mictp][value=' + ram + ']').prop('checked',true)
+			},
+			GeneticsI: function(){ 
+			var rem = '<div class="center"> <br> <form> Genetics<br>Units: <input id="gencr" type="text"> Grade: <input id="gengr" type="text"> <br> <input  type="radio" value="Semesters" name="gentp">Semesters <br> <input type="radio" value="Quarters" name="gentp">Quarters </form> </div>' ;
+			$("#Science").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=gentp][value=' + ram + ']').prop('checked',true)
+			},
+			//----------------------------------------------NONSCIENCE----------------------------------------------------------------
 			EnglishI: function(){ 
-			var rem = '<div class="center"> <br> <form> EnglishI<br>Units: <input id="EnglishAcr" type="text"> Grade: <input id="EnglishAgr" type="text"> <br> <input  type="radio" value="Semesters" name="EnglishAtp">Semesters <br> <input type="radio" value="Quarters" name="physioItp">Quarters </form> </div>' ;
+			var rem = '<div class="center"> <br> <form> EnglishI<br>Units: <input id="EnglishAcr" type="text"> Grade: <input id="EnglishAgr" type="text"> <br> <input  type="radio" value="Semesters" name="EnglishAtp">Semesters <br> <input type="radio" value="Quarters" name="EnglishAtp">Quarters </form> </div>' ;
 			$("#NonScience").prepend(rem);
 			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
 			$('input[name=EnglishAtp][value=' + ram + ']').prop('checked',true)
-			}
+			},
+			EnglishII: function(){ 
+			var rem = '<div class="center"> <br> <form> EnglishII<br>Units: <input id="EnglishIIAcr" type="text"> Grade: <input id="EnglishIIAgr" type="text"> <br> <input  type="radio" value="Semesters" name="EnglishIIAtp">Semesters <br> <input type="radio" value="Quarters" name="EnglishIIAtp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=EnglishIIAtp][value=' + ram + ']').prop('checked',true)
+			},
+			EnglishIII: function(){ 
+			var rem = '<div class="center"> <br> <form> EnglishIII<br>Units: <input id="EnglishIIIAcr" type="text"> Grade: <input id="EnglishIIIAgr" type="text"> <br> <input  type="radio" value="Semesters" name="EnglishIIIAtp">Semesters <br> <input type="radio" value="Quarters" name="EnglishIIIAtp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=EnglishIIIAtp][value=' + ram + ']').prop('checked',true)
+			},
+			MathI: function(){ 
+			var rem = '<div class="center"> <br> <form> MathI<br>Units: <input id="MathIcr" type="text"> Grade: <input id="MathIgr" type="text"> <br> <input  type="radio" value="Semesters" name="MathIAtp">Semesters <br> <input type="radio" value="Quarters" name="MathIAtp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=MathIAtp][value=' + ram + ']').prop('checked',true)
+			},
+			MathII: function(){ 
+			var rem = '<div class="center"> <br> <form> MathII<br>Units: <input id="MathIIcr" type="text"> Grade: <input id="MathIIgr" type="text"> <br> <input  type="radio" value="Semesters" name="MathIIAtp">Semesters <br> <input type="radio" value="Quarters" name="MathIIAtp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=MathIIAtp][value=' + ram + ']').prop('checked',true)
+			},
+			MathIII: function(){ 
+			var rem = '<div class="center"> <br> <form> MathIII<br>Units: <input id="MathIIIcr" type="text"> Grade: <input id="MathIIIgr" type="text"> <br> <input  type="radio" value="Semesters" name="MathIIIAtp">Semesters <br> <input type="radio" value="Quarters" name="MathIIIAtp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=MathIIIAtp][value=' + ram + ']').prop('checked',true)
+			},
+			PsychologyI: function(){ 
+			var rem = '<div class="center"> <br> <form> PsychologyI<br>Units: <input id="psycr" type="text"> Grade: <input id="psygr" type="text"> <br> <input  type="radio" value="Semesters" name="psytp">Semesters <br> <input type="radio" value="Quarters" name="psytp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=psytp][value=' + ram + ']').prop('checked',true)
+			},
+			SociologyI: function(){ 
+			var rem = '<div class="center"> <br> <form> SociologyI<br>Units: <input id="soccr" type="text"> Grade: <input id="socgr" type="text"> <br> <input  type="radio" value="Semesters" name="soctp">Semesters <br> <input type="radio" value="Quarters" name="soctp">Quarters </form> </div>' ;
+			$("#NonScience").prepend(rem);
+			var ram = $('input[name=SemestersorQuarters]:checked', '#myForm').val();
+			$('input[name=soctp][value=' + ram + ']').prop('checked',true)
+			},
 			};
 
 			
